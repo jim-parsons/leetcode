@@ -51,10 +51,26 @@ public class MergeSort {
        }
     }
 
+    public static void mergeSortBU(int[] arr){
+        for (int sz = 1; sz <= arr.length; sz=sz*2) {
+            for (int i = 0; i + sz < arr.length; i += sz*2) {
+                // 对arr[i...i+sz-1]和arr[i+sz...i+2*sz-1]进行归并
+                // 每个区间大小为sz-1
+                // i + sz + sz -1 可能越界,所以选取他和n-1的小者
+                doMerge(arr, i, i +sz -1, Math.min(i + sz + sz -1, arr.length-1));
+            }
+        }
+
+    }
+
 
     public static void main(String[] args) {
         int[] arr = {3,2,1,4,10,7,6,5,9,8};
         sort(arr);
         printArrs(arr);
+        System.out.println("=======");
+        int[] arr1 = {3,2,1,4,10,7,6,5,9,8};
+        mergeSortBU(arr1);
+        printArrs(arr1);
     }
 }
