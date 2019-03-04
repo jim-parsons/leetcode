@@ -58,6 +58,7 @@ public class QuickSort {
         int i, j, temp, t;
         i = low;
         j = high;
+        // temp 是基准
         temp = arr[low];
 
         while (i < j) {
@@ -74,13 +75,18 @@ public class QuickSort {
                 arr[i] = t;
             }
         }
+        arr[low] = arr[i];
+        arr[i] = temp;
+
+        doQuickSort(arr, low, i-1);
+        doQuickSort(arr, i+1, high);
 
 
     }
 
     public static void main(String[] args) {
         int[] arr = {3,2,1,4,10,7,6,5,9,8};
-        sort(arr);
+        sort1(arr);
         printArrs(arr);
     }
 }
