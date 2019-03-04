@@ -84,7 +84,6 @@ public class NonRecur {
                     System.out.print(stack.pop().value + " ");
                     root = n;
                 }
-
             }
         }
     }
