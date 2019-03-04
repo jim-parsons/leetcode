@@ -1,7 +1,7 @@
 package study.bitree;
 
 /**
- * @author : tang.chunbo@foxmail.com
+ * @author : tom
  * @date : 2019-03-04 16:18
  **/
 public class Node {

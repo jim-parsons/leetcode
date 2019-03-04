@@ -1,7 +1,7 @@
 package study.sort.util;
 
 /**
- * @author : tang.chunbo@foxmail.com
+ * @author : tom
  * @date : 2019-02-23 16:02
  **/
 public class StringBuilderHolder {

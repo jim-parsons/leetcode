@@ -3,7 +3,7 @@ package study.sort.util;
 import java.util.Random;
 
 /**
- * @author : tang.chunbo@foxmail.com
+ * @author : tom
  * @date : 2019-02-15 17:22
  **/
 public class SortUtil {

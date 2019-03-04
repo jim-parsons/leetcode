@@ -4,7 +4,7 @@ package study.sort;
 import static study.sort.util.SortUtil.printArrs;
 
 /**
- * @author : tang.chunbo@foxmail.com
+ * @author : tom
  * @date : 2019-02-19 20:16
  **/
 public class MergeSort {

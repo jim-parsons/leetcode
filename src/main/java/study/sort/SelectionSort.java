@@ -2,7 +2,7 @@ package study.sort;
 
 import static study.sort.util.SortUtil.*;
 /**
- * @author : tang.chunbo@chinaredstar.com
+ * @author : tom
  * @date : 2019-02-15 17:22
  **/
 public class SelectionSort {
