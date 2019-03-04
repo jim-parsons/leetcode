@@ -1,4 +1,4 @@
-package study.util;
+package study.sort.util;
 
 import java.util.Random;
 

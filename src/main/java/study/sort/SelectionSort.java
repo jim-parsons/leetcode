@@ -1,6 +1,6 @@
-package study;
+package study.sort;
 
-import static study.util.SortUtil.*;
+import static study.sort.util.SortUtil.*;
 /**
  * @author : tang.chunbo@chinaredstar.com
  * @date : 2019-02-15 17:22

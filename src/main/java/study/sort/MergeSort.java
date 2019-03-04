@@ -1,7 +1,7 @@
-package study;
+package study.sort;
 
 
-import static study.util.SortUtil.printArrs;
+import static study.sort.util.SortUtil.printArrs;
 
 /**
  * @author : tang.chunbo@foxmail.com
