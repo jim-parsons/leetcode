@@ -73,14 +73,19 @@ public class NonRecur {
         if (root != null) {
             Stack<Node> stack = new Stack<Node>();
             stack.add(root);
+            // n为栈顶节点
             Node n;
             while (!stack.empty()) {
                 n = stack.peek();
+                // 当前节点的左子树不为空,且上一个弹出的节点(root=n)不是当前节点的孩子
+                // 则说明栈顶节点的左孩子还没打印,则让其入栈
                 if (n.left != null && root != n.left && root != n.right) {
                     stack.push(n.left);
                 } else if (n.right != null && n.right != root) {
+                    // 当前节点右节点不为空,且上一个弹出的节点不是右节点
                     stack.push(n.right);
                 } else {
+                    // 此时n为最左的节点,弹出,并把root指向最左节点
                     System.out.print(stack.pop().value + " ");
                     root = n;
                 }
