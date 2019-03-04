@@ -20,6 +20,7 @@ public class BubbleSort {
                 }
             }
             if (!flag) {
+
                 break;
             }
         }
