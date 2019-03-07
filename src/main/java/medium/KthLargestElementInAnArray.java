@@ -1,5 +1,7 @@
 package medium;
 
+import java.util.PriorityQueue;
+
 public class KthLargestElementInAnArray {
     /**
      * 215
@@ -37,17 +39,23 @@ public class KthLargestElementInAnArray {
 
 
     public int partition(int[] nums, int low, int high) {
-        // 最后要使得nums[low+1...j] < v && nums[j+1...i] > v
+        // 最后要使得nums[low+1...j-1] < v && nums[j+1...high] > v
         int v = nums[low];
         // 哨兵
         int j = low;
+        // [low...j] 均为小于 v的数
+        // [j+1...i-1] 均为大于v的数
+        // 此时判断i的元素与v的大小,如果 v > nums[i], 则将[j+1] 和 [i] 元素替换
         for (int i = low+1; i <= high; i++) {
             if (nums[i] < v) {
-                swap(nums, nums[i], nums[j+1]);
-                j++;
+                int temp = nums[i];
+                nums[i] = nums[j+1];
+                nums[++j] = temp;
             }
         }
-        swap(nums, low, j);
+        int temp = nums[low];
+        nums[low] = nums[j];
+        nums[j] = temp;
         return j;
     }
 
@@ -57,11 +65,22 @@ public class KthLargestElementInAnArray {
         nums[i] = temp;
     }
 
+    public int find (int[] nums, int k) {
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>();
+        for (int i: nums) {
+            q.add(i);
+            if (q.size() > k) {
+                q.poll();
+            }
+        }
+        return q.peek();
+    }
 
 
     public static void main(String[] args) {
         int[] nums = {3,2,1,5,6,4};
         KthLargestElementInAnArray k = new KthLargestElementInAnArray();
+//        System.out.println(k.find(nums, 2));
         System.out.println(k.findKthLargest(nums, 2));
     }
 }
