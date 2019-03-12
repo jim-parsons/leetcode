@@ -1,6 +1,7 @@
 package study.sort;
 
 import static study.sort.util.SortUtil.printArrs;
+import static study.sort.util.SortUtil.swap;
 
 public class QuickSort {
 
@@ -28,22 +29,22 @@ public class QuickSort {
      */
     public static int partition(int[] arr, int l, int r){
         int v = arr[l];
-        // int[l+1...j] < v; arr[j+1...i) > v;此时i的位置为当前所要比较的元素index
         // j为哨兵的作用
         int j = l;
+
+        // 设当前访问元素的下标为i,
+        // 则 int[l+1...j] < v < int[j+1...i-1] [i...r] => 此部分为未比较部分
+        // 此时继续比较 v 和 arr[i]的大小
         for (int i = l+1; i <= r; i++) {
-            if(arr[i] < v) {
-                // 此时j+1位置的元素为大于v的
-                int tmp = arr[j+1];
-                arr[j+1] = arr[i];
-                arr[i] = tmp;
+            if(v > arr[i]) {
+                // 此时j+1位置的元素为大于v的第一个元素,
+                // j位置的元素为小于v的最后一个元素
+                swap(arr, arr[j+1], arr[i]);
                 j++;
             }
         }
         // 最后交换l和j的
-        int tmp = arr[l];
-        arr[l] = arr[j];
-        arr[j] = tmp;
+        swap(arr, l, j);
         return j;
     }
 
@@ -55,7 +56,7 @@ public class QuickSort {
         if(low>=high){
             return;
         }
-        int i, j, temp, t;
+        int i, j, temp;
         i = low;
         j = high;
         // temp 是基准
@@ -70,9 +71,7 @@ public class QuickSort {
             }
             //经过两个while,此时已经找到了需要交换的元素
             if(i < j) {
-                t = arr[j];
-                arr[j] = arr[i];
-                arr[i] = t;
+                swap(arr, i, j);
             }
         }
         arr[low] = arr[i];
@@ -86,7 +85,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {3,2,1,4,10,7,6,5,9,8};
-        sort1(arr);
+        sort(arr);
         printArrs(arr);
     }
 }

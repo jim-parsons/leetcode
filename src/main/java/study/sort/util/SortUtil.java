@@ -20,6 +20,12 @@ public class SortUtil {
         return arr;
     }
 
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
+    }
+
     /**
      * 产生几乎有序的数组
      * @param len 要产生的数组长度
