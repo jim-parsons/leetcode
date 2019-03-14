@@ -24,7 +24,7 @@ public class AllocationMemory {
         }
         list = null;
         for (int i = 0; i < 3; i++) {
-            byte[] alloc = new byte[3 *1024 *1024];
+            byte[] alloc = new byte[3*xmb];
             alloc= null;
         }
         for (int i = 0; i < 4; i++) {
