@@ -16,4 +16,8 @@ public class RemoveDuplicatesFromSortedArrayII {
      *
      * 你不需要考虑数组中超出新长度后面的元素。
      */
+
+    public int removeDuplicates(int[] nums) {
+        return 1;
+    }
 }

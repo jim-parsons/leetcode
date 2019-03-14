@@ -74,6 +74,7 @@ public class QuickSort {
                 swap(arr, i, j);
             }
         }
+        // 此时i=j
         arr[low] = arr[i];
         arr[i] = temp;
 

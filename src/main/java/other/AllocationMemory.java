@@ -13,7 +13,7 @@ public class AllocationMemory {
      *
      * -Xms8m -Xmx8m -XX:+PrintGCDetails -XX:+UseSerialGC -Xmn3m -XX:SurvivorRatio=2
      */
-    private final static int xmb = 1024*1168;
+    private final static int xmb = 1024*1024;
 
     public static void main(String[] args) {
         List<byte[]> list = new ArrayList<byte[]>();
@@ -23,7 +23,7 @@ public class AllocationMemory {
             list.add(alloc);
         }
         list = null;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             byte[] alloc = new byte[3 *1024 *1024];
             alloc= null;
         }
