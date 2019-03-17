@@ -36,16 +36,16 @@ public class MoveZeros {
                 if (i != k) {
                     int temp = nums[i];
                     nums[i] = nums[k];
-                    nums[k++] = temp;
-                } else {
-                    k++;
+                    nums[k] = temp;
                 }
+                k++;
+
             }
         }
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 1, 0, 3, 12};
+        int[] arr = new int[]{0,1,0,3,12};
 //        moveZeroes1(arr);
         moveZeros(arr);
         for (int i = 0; i < arr.length; i++) {
