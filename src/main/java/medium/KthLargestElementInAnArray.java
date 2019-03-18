@@ -21,7 +21,8 @@ public class KthLargestElementInAnArray {
 
     public int findKthLargest(int[] nums, int k) {
         int low = 0, high = nums.length - 1;
-        // 原本k为第k大的元素,现在赋值之后k的意义变成了第k小的元素
+        // 原本k为第k大的元素
+        // {3,2,1,5,6,4}, 2
         k = nums.length - k;
         while (low < high) {
             int j = partition(nums, low, high);
@@ -48,18 +49,14 @@ public class KthLargestElementInAnArray {
         // 此时判断i的元素与v的大小,如果 v > nums[i], 则将[j+1] 和 [i] 元素替换
         for (int i = low+1; i <= high; i++) {
             if (nums[i] < v) {
-                int temp = nums[i];
-                nums[i] = nums[j+1];
-                nums[++j] = temp;
+                swap(nums, i, ++j);
             }
         }
-        int temp = nums[low];
-        nums[low] = nums[j];
-        nums[j] = temp;
+        swap(nums, low, j);
         return j;
     }
 
-    public void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
         int temp = nums[j];
         nums[j] = nums[i];
         nums[i] = temp;

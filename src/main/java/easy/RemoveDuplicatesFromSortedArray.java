@@ -26,17 +26,16 @@ public class RemoveDuplicatesFromSortedArray {
         for (int i = 1; i < nums.length; i++) {
             if (nums[i-1] != nums[i]) {
                 if (j != i) {
-                    nums[j++] = nums[i];
-                } else {
-                    j++;
+                    nums[j] = nums[i];
                 }
+                j++;
             }
         }
         return j;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 1, 2};
+        int[] nums = {1, 1, 2, 3, 3};
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();
         System.out.println(r.removeDuplicates(nums));
         SortUtil.printArrs(nums);

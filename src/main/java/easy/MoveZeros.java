@@ -39,7 +39,6 @@ public class MoveZeros {
                     nums[k] = temp;
                 }
                 k++;
-
             }
         }
     }
