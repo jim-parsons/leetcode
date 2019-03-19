@@ -77,7 +77,6 @@ public class KthLargestElementInAnArray {
     public static void main(String[] args) {
         int[] nums = {3,2,1,5,6,4};
         KthLargestElementInAnArray k = new KthLargestElementInAnArray();
-//        System.out.println(k.find(nums, 2));
         System.out.println(k.findKthLargest(nums, 2));
     }
 }

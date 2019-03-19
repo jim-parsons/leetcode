@@ -1,6 +1,5 @@
 package easy;
 
-import study.sort.util.SortUtil;
 
 import java.util.ArrayList;
 import java.util.List;

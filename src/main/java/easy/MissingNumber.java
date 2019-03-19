@@ -42,10 +42,7 @@ public class MissingNumber {
                 int temp = nums[i];
                 nums[i] = nums[temp];
                 nums[temp] = temp;
-                SortUtil.printArrs(nums);
             }
-            System.out.print(" " + i);
-            System.out.println();
         }
         // 此时已经排好序
         for (int i = 0; i < n; i++) {

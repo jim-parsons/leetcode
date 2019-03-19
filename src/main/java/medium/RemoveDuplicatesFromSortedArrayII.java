@@ -1,5 +1,7 @@
 package medium;
 
+import study.sort.util.SortUtil;
+
 public class RemoveDuplicatesFromSortedArrayII {
     /**
      * 80
@@ -18,6 +20,35 @@ public class RemoveDuplicatesFromSortedArrayII {
      */
 
     public int removeDuplicates(int[] nums) {
-        return 1;
+        int len = 0;
+        for (int num : nums) {
+            if (len < 2 || num != nums[len - 2]) {
+                nums[len++] = num;
+            }
+        }
+        return len;
+    }
+
+    public int removeDuplicates1(int[] nums) {
+        int len = 1, count = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i-1]) {
+                count++;
+                if (count <= 2) {
+                    nums[len++] = nums[i];
+                }
+            } else {
+                count = 1;
+                nums[len++] = nums[i];
+            }
+        }
+        return len;
+    }
+
+    public static void main(String[] args) {
+        RemoveDuplicatesFromSortedArrayII r = new RemoveDuplicatesFromSortedArrayII();
+        int[] arr = {1,1,1,2,2,2,3};
+        r.removeDuplicates(arr);
+        SortUtil.printArrs(arr);
     }
 }

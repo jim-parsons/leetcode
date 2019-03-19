@@ -30,9 +30,10 @@ public class MajorityElement {
             if (nums[i] == v) {
                 count++;
             } else {
-                count--;
-                if (count < 1) {
-                    v = nums[i+1];
+                if (count == 0) {
+                    v = nums[i];
+                } else {
+                    count--;
                 }
             }
         }
@@ -41,8 +42,8 @@ public class MajorityElement {
 
     public static void main(String[] args) {
         MajorityElement m = new MajorityElement();
-        int[] arr = {2,2,1,1,1,2,2};
-//        int[] arr = {10, 9, 9, 9, 10};
+//        int[] arr = {2,2,1,1,1,2,2};
+        int[] arr = {10, 9, 9, 9, 10};
         System.out.println(m.majorityElement(arr));
     }
 }
