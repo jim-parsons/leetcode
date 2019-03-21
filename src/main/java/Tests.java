@@ -8,8 +8,11 @@
 public class Tests {
 
     public static void main(String[] args) {
-        String s1 = "a";
-        System.out.println(s1.replace("a", "b"));
+        int[] arr = new int[2];
+        int i = 0;
+        arr[1] = -1;
+        if (arr[i++]++ >= 0) {
+        }
     }
 
 }
