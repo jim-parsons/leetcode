@@ -9,6 +9,21 @@ public class MergeSort {
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    public static void sort1(int[] arr) {
+        //自低向上
+        int n = arr.length;
+        // sz 表示归并元素的的个数,从1开始,每次增加1倍,1->2->4...
+        for (int sz = 1; sz <= n; sz += sz) {
+            // 归并的其实位置,每次取两部分
+            for (int i = 0; i + sz < n; i += sz + sz) {
+                // 对arr[i...i+sz-1] 和 [i+sz...i+sz+sz-1]进行归并
+                // 归并至少是两个数组,所以要保证第二个数组存在,那么i+sz < n
+                // 同时保证i+sz+sz-1不能越界
+                doMergeSort(arr, i, i + sz - 1, Math.min(i + sz + sz - 1, n - 1));
+            }
+        }
+    }
+
     private static void mergeSort(int[] arr, int l, int h) {
         // 递归退出条件
         if (l >= h) return;
@@ -17,7 +32,9 @@ public class MergeSort {
         mergeSort(arr, l, mid);
         mergeSort(arr, mid + 1, h);
         // 排序
-        doMergeSort(arr, l, mid, h);
+        // 因为[l...mid], [mid+1...h]数组内已经是有序的
+        if (arr[mid] > arr[mid + 1])
+            doMergeSort(arr, l, mid, h);
     }
 
     /**
@@ -55,7 +72,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] intArrs = SortUtil.getIntArrs(10);
         SortUtil.printArrs(intArrs);
-        sort(intArrs);
+        sort1(intArrs);
         SortUtil.printArrs(intArrs);
     }
 }
