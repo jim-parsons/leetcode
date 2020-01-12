@@ -1,6 +1,6 @@
 package study.sort;
 
-import static study.sort.util.SortUtil.*;
+import static study.util.SortUtil.*;
 /**
  * @author : tom
  * @date : 2019-02-15 17:22

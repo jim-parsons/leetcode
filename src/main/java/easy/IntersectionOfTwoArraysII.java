@@ -1,6 +1,6 @@
 package easy;
 
-import study.sort.util.SortUtil;
+import study.util.SortUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

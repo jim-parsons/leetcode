@@ -1,6 +1,6 @@
 package easy;
 
-import study.sort.util.SortUtil;
+import study.util.SortUtil;
 
 public class TwoSumII {
     /**

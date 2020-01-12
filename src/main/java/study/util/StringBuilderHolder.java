@@ -1,4 +1,4 @@
-package study.sort.util;
+package study.util;
 
 /**
  * @author : tom

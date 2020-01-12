@@ -1,6 +1,6 @@
 package medium;
 
-import study.sort.util.SortUtil;
+import study.util.SortUtil;
 
 public class SortColors {
     /**

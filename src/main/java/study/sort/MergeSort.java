@@ -1,7 +1,7 @@
 package study.sort;
 
 
-import static study.sort.util.SortUtil.printArrs;
+import static study.util.SortUtil.printArrs;
 
 /**
  * @author : tom

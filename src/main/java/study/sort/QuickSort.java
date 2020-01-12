@@ -1,7 +1,7 @@
 package study.sort;
 
-import static study.sort.util.SortUtil.printArrs;
-import static study.sort.util.SortUtil.swap;
+import static study.util.SortUtil.printArrs;
+import static study.util.SortUtil.swap;
 
 public class QuickSort {
 
