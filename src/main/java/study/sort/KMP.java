@@ -1,5 +1,6 @@
 package study.sort;
 
+
 public class KMP {
 
     private static int[] getNext(char[] t) {
@@ -10,6 +11,7 @@ public class KMP {
         for (int j = 2; j < t.length; j++) {
             k = next[j-1];// 前一位的值
             while (k != -1) {
+                // 此时[0...k]是j-1的最长公共子串
                 if(t[j-1] == t[k]) {
                     next[j] = k+1;
                     break;
