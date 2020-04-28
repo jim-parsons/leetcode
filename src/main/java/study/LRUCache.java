@@ -5,91 +5,112 @@ import java.util.Map;
 
 public class LRUCache {
 
-    private int capacity;
+    private HashMap<Integer, Node> map;
 
-    private LRUNode head;
+    private DoubleList cache;
 
-    private LRUNode tail;
+    private int cap;
 
-    private Map<String, LRUNode> map;
-
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.map = new HashMap<>();
+    public LRUCache(int cap) {
+        this.cap = cap;
+        map = new HashMap<>();
+        cache = new DoubleList();
     }
 
 
-    static class LRUNode {
-        String key;
-        Object value;
-        LRUNode prev;
-        LRUNode next;
+    public int get(int key) {
+        if(!map.containsKey(key)) return -1;
 
-        public LRUNode(String key, Object value) {
-            this.key = key;
-            this.value = value;
-        }
+
+        int val = map.get(key).val;
+        // 添加到头部
+        put(key, val);
+        return val;
     }
 
+    private void put(int key, int val) {
+        Node x = new Node(key, val);
 
-    public void setHead(LRUNode node) {
-        if (head != null) {
-            node.next = head;
-            head.prev = node;
-        }
-
-        head = node;
-
-        if (tail == null) {
-            tail = node;
-        }
-    }
-
-    public void remove(LRUNode node, boolean flag) {
-        if (node.prev != null) {
-            node.prev.next = node.next;
+        if(map.containsKey(key)) {
+            Node last = map.get(key);
+            cache.remove(last);
+            cache.addFirst(x);
         } else {
-            head = node.next;
-        }
-
-        if (node.next != null) {
-            node.next.prev = node.prev;
-        } else {
-            tail = node.prev;
-        }
-
-        node.prev = null;
-        node.next = null;
-        if(flag) {
-            map.remove(node.key);
-        }
-    }
-
-    public void set(String key, Object value) {
-        LRUNode node = map.get(key);
-        if(node != null) {
-            node.value = value;
-            remove(node, false);
-        } else {
-            node = new LRUNode(key, value);
-            if(map.size() > capacity) {
-                remove(tail, true);
+            if(this.cap == cache.size()) {
+                // 先删除最后一个
+                Node last = cache.removeLast();
+                map.remove(last.key);
             }
-            map.put(key, node);
+            cache.addFirst(x);
         }
-        setHead(node);
+        map.put(key, x);
     }
 
 
-    public Object get(String key) {
-        LRUNode node = map.get(key);
 
-        if(node != null) {
-            remove(node, false);
-            setHead(node);
-            return node.value;
+
+
+
+
+
+    class Node {
+        public int key;
+        public int val;
+
+        public Node next;
+        public Node prev;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
         }
-        return null;
+    }
+
+    class DoubleList {
+        private Node head, tail;
+
+        private int size;
+
+        public DoubleList() {
+            head = new Node(0, 0);
+            tail = new Node(0, 0);
+            head.next = tail;
+            tail.prev = head;
+        }
+
+
+        public void addFirst(Node x) {
+            x.next = head.next;
+            x.prev = head;
+
+            head.next.prev = x;
+            head.next = x;
+            size++;
+        }
+
+
+        public void remove(Node x) {
+            // prev - x - next
+
+            x.prev.next = x.next;
+            x.next.prev = x.prev;
+            size--;
+        }
+
+
+        public Node removeLast() {
+            if(tail.prev == head) {
+                return null;
+            }
+
+            Node last = tail.prev;
+
+            remove(last);
+            return last;
+        }
+
+        public int size() {return  size;}
+
     }
 
 }
